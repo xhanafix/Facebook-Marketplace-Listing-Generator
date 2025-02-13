@@ -1,0 +1,339 @@
+:root {
+    --primary-color: #1877f2;
+    --secondary-color: #42b72a;
+    --background-color: #f0f2f5;
+    --text-color: #1c1e21;
+    --border-color: #dddfe2;
+    --card-background: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    --primary-color: #2374e1;
+    --secondary-color: #45bd31;
+    --background-color: #18191a;
+    --text-color: #e4e6eb;
+    --border-color: #3e4042;
+    --card-background: #242526;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.api-key-section {
+    margin-bottom: 30px;
+    display: flex;
+    gap: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #166fe5;
+}
+
+.listing-card {
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px var(--shadow-color);
+    overflow: hidden;
+    width: 100%;
+}
+
+.listing-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.copy-btn {
+    background-color: var(--secondary-color);
+    margin-top: 10px;
+}
+
+.copy-btn:hover {
+    background-color: #36a420;
+}
+
+.compliance-check {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.compliance-check.pass {
+    background-color: #e6ffe6;
+    color: #006600;
+}
+
+.compliance-check.fail {
+    background-color: #ffe6e6;
+    color: #cc0000;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.theme-toggle:hover {
+    background-color: var(--border-color);
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: white;
+}
+
+.loading-overlay.hidden {
+    display: none;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .listing-card {
+    background-color: var(--card-background);
+    box-shadow: 0 1px 3px var(--shadow-color);
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+    background-color: var(--card-background);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .compliance-check.pass {
+    background-color: rgba(0, 102, 0, 0.2);
+    color: #4caf50;
+}
+
+[data-theme="dark"] .compliance-check.fail {
+    background-color: rgba(204, 0, 0, 0.2);
+    color: #f44336;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.listing-card {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .api-key-section {
+        flex-direction: column;
+    }
+
+    .theme-toggle {
+        top: 10px;
+        right: 10px;
+    }
+
+    .loading-spinner {
+        width: 40px;
+        height: 40px;
+    }
+
+    .listing-card {
+        padding: 10px;
+    }
+
+    .listing-card pre {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}
+
+.listing-card pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    background-color: var(--background-color);
+    padding: 15px;
+    border-radius: 5px;
+    max-width: 100%;
+    font-family: inherit;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.copy-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--secondary-color);
+}
+
+.copy-btn i {
+    font-size: 0.9em;
+}
+
+/* Enhance readability of emojis */
+.listing-card pre {
+    letter-spacing: 0.2px;
+}
+
+/* Style bullet points */
+.listing-card pre {
+    padding-left: 20px;
+    text-indent: -20px;
+}
+
+/* Dark theme adjustment for pre element */
+[data-theme="dark"] .listing-card pre {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Footer styles */
+.footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+.heart {
+    display: inline-block;
+    animation: glow 1.5s ease-in-out infinite alternate;
+    position: relative;
+    top: -2px;
+}
+
+@keyframes glow {
+    from {
+        filter: drop-shadow(0 0 2px rgba(255, 0, 0, 0.4))
+               drop-shadow(0 0 4px rgba(255, 0, 0, 0.2));
+        transform: scale(1);
+    }
+    to {
+        filter: drop-shadow(0 0 4px rgba(255, 0, 0, 0.6))
+               drop-shadow(0 0 6px rgba(255, 0, 0, 0.4));
+        transform: scale(1.1);
+    }
+}
+
+/* Dark theme adjustment for footer */
+[data-theme="dark"] .footer {
+    border-top: 1px solid var(--border-color);
+}
+
+/* Responsive adjustment for footer */
+@media (max-width: 600px) {
+    .footer {
+        margin-top: 20px;
+        padding: 15px;
+        font-size: 0.8rem;
+    }
+} 

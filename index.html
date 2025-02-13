@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FB Marketplace Listing Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Facebook Marketplace Listing Generator</h1>
+            <button id="themeToggle" class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <section class="api-key-section">
+            <input type="password" id="apiKeyInput" placeholder="Enter OpenRouter API Key">
+            <button id="saveApiKey">Save API Key</button>
+        </section>
+
+        <section class="input-section">
+            <form id="listingForm">
+                <div class="form-group">
+                    <label for="outputLanguage">Output Language</label>
+                    <select id="outputLanguage" required>
+                        <option value="english">English</option>
+                        <option value="malay">Bahasa Malaysia</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="title">Product Title</label>
+                    <input type="text" id="title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" required>
+                        <option value="">Select a category</option>
+                        <option value="furniture">Furniture</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="clothing">Clothing</option>
+                        <option value="vehicles">Vehicles</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Product Description</label>
+                    <textarea id="description" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="price">Price ($)</label>
+                    <input type="number" id="price" required min="0">
+                </div>
+
+                <div class="form-group">
+                    <label for="condition">Condition</label>
+                    <select id="condition" required>
+                        <option value="new">New</option>
+                        <option value="like-new">Like New</option>
+                        <option value="good">Good</option>
+                        <option value="fair">Fair</option>
+                        <option value="poor">Poor</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="generateBtn">Generate Listings</button>
+            </form>
+        </section>
+
+        <section class="output-section" id="outputSection">
+            <!-- Generated listings will be inserted here -->
+        </section>
+
+        <div id="loadingOverlay" class="loading-overlay hidden">
+            <div class="loading-spinner"></div>
+            <p>Generating listings...</p>
+        </div>
+
+        <footer class="footer">
+            <p>© 2025 hanafihassan.com All Rights Reserved with <span class="heart">❤️</span></p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
